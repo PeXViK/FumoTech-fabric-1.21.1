@@ -1,0 +1,21 @@
+{
+  "item.fumotech.satori": "Сатори",
+  "item.fumotech.satorium_shard": "Осколок Саториума",
+  "item.fumotech.satorium_crystal": "Кристалл Саториума",
+  "item.fumotech.satorium_ingot": "Слиток Саториума",
+  "item.fumotech.cirnium_ingot": "Слиток Сырния",
+  "item.fumotech.cirnium_shard": "Осколок Сырния",
+  "item.fumotech.cirnium_crystal": "Кристалл Сырния",
+
+  "item.fumotech.cirnium_club": "Сырниевая дубинка",
+
+  "block.fumotech.satorium_block": "Блок Саториума",
+  "block.fumotech.satorium_ore": "Руда Саториума",
+  "block.fumotech.deepslate_satorium_ore": "Глубинная руда Саториума",
+  "block.fumotech.cirnium_block": "Блок Сырния",
+  "block.fumotech.cirnium_ore": "Руда Сырния",
+  "block.fumotech.deepslate_cirnium_ore": "Глубинная руда Сырния",
+
+  "creativetab.fumotech.fumotech_items": "Предметы FumoTech",
+  "creativetab.fumotech.fumotech_blocks": "Блоки FumoTech"
+}
