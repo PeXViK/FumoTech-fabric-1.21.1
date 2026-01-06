@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "fumotech",
+	"version": "${version}",
+	"name": "FumoTech",
+	"description": "In develop",
+	"authors": [
+		"Room106"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/fumotech/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.pexvik.fumotech.FumoTech"
+		],
+		"fabric-datagen": [
+			"com.pexvik.fumotech.FumoTechDataGenerator"
+		],
+        "client" : [
+            "com.pexvik.fumotech.FumoTechClient"
+        ]
+	},
+	"mixins": [
+		"fumotech.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
