@@ -1,14 +1,19 @@
 package com.pexvik.fumotech.item;
 
 import com.pexvik.fumotech.FumoTech;
+import com.pexvik.fumotech.item.custom.CirniumClubItem;
+import com.pexvik.fumotech.item.custom.ClubItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+
     // RESOURCES
     public static final Item SATORIUM_SHARD = registerItem("satorium_shard", new Item(new Item.Settings()));
     public static final Item SATORIUM_CRYSTAL = registerItem("satorium_crystal", new Item(new Item.Settings()));
@@ -56,6 +61,12 @@ public class ModItems {
     public static final Item TIN_NUGGET = registerItem("tin_nugget", new Item(new Item.Settings()));
     public static final Item TIN_PLATE = registerItem("tin_plate", new Item(new Item.Settings()));
     public static final Item TIN_DUST = registerItem("tin_dust", new Item(new Item.Settings()));
+
+    // ITEMS
+    public static final Item CIRNIUM_CLUB = registerItem("cirnium_club", new CirniumClubItem(ToolMaterials.NETHERITE,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
+    public static final Item RUBBER_CLUB = registerItem("rubber_club", new ClubItem(ToolMaterials.IRON,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(FumoTech.MOD_ID, name), item);

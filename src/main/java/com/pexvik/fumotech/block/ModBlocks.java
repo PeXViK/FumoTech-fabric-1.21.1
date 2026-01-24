@@ -1,6 +1,7 @@
 package com.pexvik.fumotech.block;
 
 import com.pexvik.fumotech.FumoTech;
+import com.pexvik.fumotech.block.custom.RubberClubGeneratorBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -175,8 +176,17 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.create()
                     .strength(2.0f, 3.0f)
                     .sounds(BlockSoundGroup.WOOD)
-                    .burnable())
-    );
+                    .burnable()
+            ));
+
+    // ===== FUNCTIONAL BLOCKS =====
+
+    public static final Block RUBBER_CLUB_GENERATOR = registerBlock("rubber_club_generator",
+            new RubberClubGeneratorBlock(AbstractBlock.Settings.create()
+                    .strength(3.0f)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.ANVIL)
+            ));
 
 
     private static Block registerBlock(String name, Block block) {

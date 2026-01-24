@@ -31,6 +31,7 @@ public class ModItemGroups {
                                 entries.add(ModItems.CIRNIUM_NUGGET);
                                 entries.add(ModItems.CIRNIUM_DUST);
                                 entries.add(ModItems.CIRNIUM_GEAR);
+                                entries.add(ModItems.CIRNIUM_CLUB);
 
                                 // === RUBBER ===
                                 entries.add(ModItems.RAW_RUBBER);

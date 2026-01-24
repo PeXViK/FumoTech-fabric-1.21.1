@@ -38,7 +38,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SILVER_ORE)
                 .add(ModBlocks.DEEPSLATE_SILVER_ORE)
 
-                .add(ModBlocks.STEEL_BLOCK);
+                .add(ModBlocks.STEEL_BLOCK)
+
+                .add(ModBlocks.RUBBER_CLUB_GENERATOR)
+        ;
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.HEVEA_PLANKS)
@@ -63,7 +66,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DEEPSLATE_SILVER_ORE)
                 .add(ModBlocks.TIN_BLOCK)
                 .add(ModBlocks.RAW_TIN_BLOCK)
-                .add(ModBlocks.TIN_ORE);
+                .add(ModBlocks.TIN_ORE)
+
+                .add(ModBlocks.RUBBER_CLUB_GENERATOR)
+        ;
 
         getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.HEVEA_PLANKS);
