@@ -4,7 +4,6 @@ import com.pexvik.fumotech.block.ModBlocks;
 import com.pexvik.fumotech.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -45,6 +44,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerLog(ModBlocks.HEVEA_LOG).log(ModBlocks.HEVEA_LOG);
 
         blockStateModelGenerator.registerSingleton(ModBlocks.RUBBER_CLUB_GENERATOR, TexturedModel.CUBE_BOTTOM_TOP);
+
+        blockStateModelGenerator.registerSimpleState(ModBlocks.FUMO_PEDESTAL);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.CIRNO);
+
+
     }
 
     @Override
@@ -57,6 +61,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SATORIUM_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_GEAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SATORIUM_CLUB, Models.GENERATED);
 
         // === CIRNIUM ===
         itemModelGenerator.register(ModItems.CIRNIUM_SHARD, Models.GENERATED);
@@ -65,6 +70,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CIRNIUM_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.CIRNIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.CIRNIUM_GEAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CIRNIUM_CLUB, Models.GENERATED);
 
         // === RUBBER ===
         itemModelGenerator.register(ModItems.RAW_RUBBER, Models.GENERATED);
@@ -106,6 +112,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.TIN_PLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.TIN_GEAR, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.CIRNIUM_CLUB, Models.GENERATED);
+        // === OTHER ===
+        itemModelGenerator.register(ModItems.BURGA, Models.GENERATED);
+
     }
 }

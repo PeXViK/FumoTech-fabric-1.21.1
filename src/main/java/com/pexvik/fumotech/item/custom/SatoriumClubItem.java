@@ -18,15 +18,15 @@ import net.minecraft.world.World;
 
 import java.util.Map;
 
-public class CirniumClubItem extends ClubItem{
+public class SatoriumClubItem extends ClubItem{
 
     private static final Map<Block, Block> TRANSFROM_MAP = Map.of(
-            Blocks.LAVA, Blocks.MAGMA_BLOCK,
-            Blocks.MAGMA_BLOCK, Blocks.BASALT,
-            Blocks.WATER, Blocks.ICE
+            Blocks.BASALT, Blocks.MAGMA_BLOCK,
+            Blocks.COBBLESTONE, Blocks.STONE,
+            Blocks.ICE, Blocks.WATER
     );
 
-    public CirniumClubItem(ToolMaterial toolMaterial, Settings settings) {
+    public SatoriumClubItem(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
     }
 

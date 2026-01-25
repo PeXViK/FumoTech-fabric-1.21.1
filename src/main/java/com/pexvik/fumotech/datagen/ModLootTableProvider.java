@@ -29,7 +29,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
 
-        addDrop(ModBlocks.SATORIUM_BLOCK);;
+        addDrop(ModBlocks.SATORIUM_BLOCK);
 
         addDrop(ModBlocks.CIRNIUM_BLOCK);
 
@@ -61,6 +61,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         addDrop(ModBlocks.SILVER_ORE, oreDrops(ModBlocks.SILVER_ORE, ModItems.RAW_SILVER));
         addDrop(ModBlocks.DEEPSLATE_SILVER_ORE, oreDrops(ModBlocks.DEEPSLATE_SILVER_ORE, ModItems.RAW_SILVER));
+
+        addDrop(ModBlocks.RUBBER_CLUB_GENERATOR);
+        addDrop(ModBlocks.FUMO_PEDESTAL);
+        addDrop(ModBlocks.CIRNO);
 
 
     }

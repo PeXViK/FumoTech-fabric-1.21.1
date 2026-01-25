@@ -2,14 +2,12 @@ package com.pexvik.fumotech.block;
 
 import com.pexvik.fumotech.FumoTech;
 import com.pexvik.fumotech.block.custom.RubberClubGeneratorBlock;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -187,6 +185,22 @@ public class ModBlocks {
                     .requiresTool()
                     .sounds(BlockSoundGroup.ANVIL)
             ));
+
+    public static final Block CIRNO = registerBlock("cirno",
+            new Block(AbstractBlock.Settings.create()
+                    .strength(1.0f)
+                    .nonOpaque()
+                    .sounds(BlockSoundGroup.WOOL)
+                    ));
+
+    public static final Block FUMO_PEDESTAL = registerBlock("fumo_pedestal",
+            new Block(AbstractBlock.Settings.create()
+                    .strength(3.0f)
+                    .requiresTool()
+                    .nonOpaque()
+                    .sounds(BlockSoundGroup.STONE)
+            ));
+
 
 
     private static Block registerBlock(String name, Block block) {

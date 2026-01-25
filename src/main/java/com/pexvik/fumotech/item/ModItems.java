@@ -3,9 +3,7 @@ package com.pexvik.fumotech.item;
 import com.pexvik.fumotech.FumoTech;
 import com.pexvik.fumotech.item.custom.CirniumClubItem;
 import com.pexvik.fumotech.item.custom.ClubItem;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
@@ -65,8 +63,13 @@ public class ModItems {
     // ITEMS
     public static final Item CIRNIUM_CLUB = registerItem("cirnium_club", new CirniumClubItem(ToolMaterials.NETHERITE,
             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
-    public static final Item RUBBER_CLUB = registerItem("rubber_club", new ClubItem(ToolMaterials.IRON,
+    public static final Item SATORIUM_CLUB = registerItem("satorium_club", new CirniumClubItem(ToolMaterials.NETHERITE,
             new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
+    public static final Item RUBBER_CLUB = registerItem("rubber_club", new ClubItem(ToolMaterials.WOOD,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -2.4f))));
+
+    // FOOD
+    public static final Item BURGA = registerItem("burga", new Item(new Item.Settings().food(ModFoodComponent.BURGA)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(FumoTech.MOD_ID, name), item);

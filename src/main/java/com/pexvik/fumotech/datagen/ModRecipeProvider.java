@@ -6,10 +6,13 @@ import com.pexvik.fumotech.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -26,6 +29,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter recipeExporter) {
+
+        List<ItemConvertible> SATORIUM_SMELTABLES = List.of(ModItems.SATORIUM_DUST, ModItems.SATORIUM_CRYSTAL);
+        List<ItemConvertible> CIRNIUM_SMELTABLES = List.of(ModItems.CIRNIUM_DUST, ModItems.CIRNIUM_CRYSTAL);
+        List<ItemConvertible> TIN_SMELTABLES = List.of(ModItems.TIN_DUST, ModItems.RAW_TIN, ModBlocks.TIN_ORE);
+        List<ItemConvertible> LEAD_SMELTABLES = List.of(ModItems.LEAD_DUST, ModItems.RAW_LEAD, ModBlocks.LEAD_ORE);
+        List<ItemConvertible> SILVER_SMELTABLES = List.of(ModItems.SILVER_DUST, ModItems.RAW_SILVER, ModBlocks.SILVER_ORE);
+
+        // === Material Smelting ===
+
+        offerSmeltingAndBlasting(recipeExporter, SATORIUM_SMELTABLES, RecipeCategory.MISC, ModItems.SATORIUM_INGOT, 1.0f, 800, "satorium");
+        offerSmeltingAndBlasting(recipeExporter, CIRNIUM_SMELTABLES, RecipeCategory.MISC, ModItems.CIRNIUM_INGOT, 1.0f, 800, "cirnium");
+        offerSmeltingAndBlasting(recipeExporter, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT, 0.25f, 400, "tin");
+        offerSmeltingAndBlasting(recipeExporter, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT, 0.5f, 400, "lead");
+        offerSmeltingAndBlasting(recipeExporter, SILVER_SMELTABLES, RecipeCategory.MISC, ModItems.SILVER_INGOT, 1.0f, 400, "silver");
+        offerSmeltingAndBlasting(recipeExporter, List.of(ModItems.STEEL_DUST), RecipeCategory.MISC, ModItems.STEEL_INGOT, 0.5f, 400, "steel");
+
+        offerSmelting(recipeExporter, List.of(ModItems.RAW_RUBBER), RecipeCategory.MISC, ModItems.RUBBER, 0.25f, 400, "rubber");
 
         // === Blocks and ingots ===
         reversibleForBlocks(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModItems.SATORIUM_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SATORIUM_BLOCK, "satorium_ingot");
@@ -70,6 +90,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group("crystals")
                 .criterion("has_cirnium_shard",
                         InventoryChangedCriterion.Conditions.items(ModItems.CIRNIUM_INGOT))
+                .offerTo(recipeExporter);
+
+        // === Machines ===
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUBBER_CLUB_GENERATOR)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("CCC")
+                .input('A', ModBlocks.RUBBER_BLOCK)
+                .input('B', ModItems.RUBBER_CLUB)
+                .input('C', Blocks.IRON_BLOCK)
+                .group("machines")
+                .criterion("has_rubber_club",
+                        InventoryChangedCriterion.Conditions.items(ModItems.RUBBER_CLUB))
                 .offerTo(recipeExporter);
     }
 
@@ -123,6 +156,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 Identifier.of(FumoTech.MOD_ID, baseName + "_to_ingot").toString(),
                 Identifier.of(FumoTech.MOD_ID, "ingots_to_" + baseName).toString()
         );
+    }
+
+    private static void offerSmeltingAndBlasting(
+            RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group) {
+        offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
+        offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
     }
 
 }

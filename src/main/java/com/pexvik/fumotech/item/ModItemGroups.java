@@ -23,6 +23,7 @@ public class ModItemGroups {
                                 entries.add(ModItems.SATORIUM_NUGGET);
                                 entries.add(ModItems.SATORIUM_DUST);
                                 entries.add(ModItems.SATORIUM_GEAR);
+                                entries.add(ModItems.SATORIUM_CLUB);
 
                                 // === CIRNIUM ===
                                 entries.add(ModItems.CIRNIUM_SHARD);
@@ -36,6 +37,7 @@ public class ModItemGroups {
                                 // === RUBBER ===
                                 entries.add(ModItems.RAW_RUBBER);
                                 entries.add(ModItems.RUBBER);
+                                entries.add(ModItems.RUBBER_CLUB);
 
                                 // === ELEMENTAL ===
                                 entries.add(ModItems.MAGMA_SHARD);
@@ -72,6 +74,9 @@ public class ModItemGroups {
                                 entries.add(ModItems.TIN_PLATE);
                                 entries.add(ModItems.TIN_GEAR);
 
+                                // === FOOD ===
+                                entries.add(ModItems.BURGA);
+
                             }).build());
 
     public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
@@ -98,6 +103,11 @@ public class ModItemGroups {
                                 entries.add(ModBlocks.RUBBER_BLOCK);
                                 entries.add(ModBlocks.HEVEA_PLANKS);
                                 entries.add(ModBlocks.HEVEA_LOG);
+
+                                entries.add(ModBlocks.RUBBER_CLUB_GENERATOR);
+                                entries.add(ModBlocks.FUMO_PEDESTAL);
+                                entries.add(ModBlocks.CIRNO);
+
 
                             }).build());
 
