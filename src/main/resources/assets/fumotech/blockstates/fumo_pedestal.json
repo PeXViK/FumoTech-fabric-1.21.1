@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fumotech:block/fumo_pedestal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fumotech:block/fumo_pedestal"
+    },
+    "facing=south": {
+      "model": "fumotech:block/fumo_pedestal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fumotech:block/fumo_pedestal",
+      "y": 270
+    }
+  }
+}

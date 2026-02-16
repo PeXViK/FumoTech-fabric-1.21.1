@@ -3,26 +3,26 @@ package com.pexvik.fumotech.item;
 import com.pexvik.fumotech.FumoTech;
 import com.pexvik.fumotech.item.custom.CirniumClubItem;
 import com.pexvik.fumotech.item.custom.ClubItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterials;
+import com.pexvik.fumotech.item.custom.HammerItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 public class ModItems {
 
     // RESOURCES
     public static final Item SATORIUM_SHARD = registerItem("satorium_shard", new Item(new Item.Settings()));
     public static final Item SATORIUM_CRYSTAL = registerItem("satorium_crystal", new Item(new Item.Settings()));
-    public static final Item SATORIUM_INGOT = registerItem("satorium_ingot", new Item(new Item.Settings()));
+    public static final Item SATORIUM_INGOT = registerItem("satorium_ingot", new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item SATORIUM_GEAR = registerItem("satorium_gear", new Item(new Item.Settings()));
     public static final Item SATORIUM_NUGGET = registerItem("satorium_nugget", new Item(new Item.Settings()));
     public static final Item SATORIUM_DUST = registerItem("satorium_dust", new Item(new Item.Settings()));
 
     public static final Item CIRNIUM_SHARD = registerItem("cirnium_shard", new Item(new Item.Settings()));
     public static final Item CIRNIUM_CRYSTAL = registerItem("cirnium_crystal", new Item(new Item.Settings()));
-    public static final Item CIRNIUM_INGOT = registerItem("cirnium_ingot", new Item(new Item.Settings()));
+    public static final Item CIRNIUM_INGOT = registerItem("cirnium_ingot", new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item CIRNIUM_GEAR = registerItem("cirnium_gear", new Item(new Item.Settings()));
     public static final Item CIRNIUM_NUGGET = registerItem("cirnium_nugget", new Item(new Item.Settings()));
     public static final Item CIRNIUM_DUST = registerItem("cirnium_dust", new Item(new Item.Settings()));
@@ -60,15 +60,61 @@ public class ModItems {
     public static final Item TIN_PLATE = registerItem("tin_plate", new Item(new Item.Settings()));
     public static final Item TIN_DUST = registerItem("tin_dust", new Item(new Item.Settings()));
 
-    // ITEMS
-    public static final Item CIRNIUM_CLUB = registerItem("cirnium_club", new CirniumClubItem(ToolMaterials.NETHERITE,
-            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
-    public static final Item SATORIUM_CLUB = registerItem("satorium_club", new CirniumClubItem(ToolMaterials.NETHERITE,
-            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.NETHERITE, 3, -2.4f))));
-    public static final Item RUBBER_CLUB = registerItem("rubber_club", new ClubItem(ToolMaterials.WOOD,
-            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.WOOD, 3, -2.4f))));
+    // === Items ===
+    // Satorium
+    public static final Item SATORI_ITEM = registerItem("satori_item", new Item(new Item.Settings().rarity(Rarity.EPIC)));
+    public static final Item SATORIUM_SWORD = registerItem("satorium_sword", new SwordItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.SATORIUM, 3, -2.4F))));
+    public static final Item SATORIUM_AXE = registerItem("satorium_axe", new AxeItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.SATORIUM, 5, -3F))));
+    public static final Item SATORIUM_PICKAXE = registerItem("satorium_pickaxe", new PickaxeItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.SATORIUM, 1, -2.8F))));
+    public static final Item SATORIUM_SHOVEL = registerItem("satorium_shovel", new ShovelItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.SATORIUM, 1.5F, -3F))));
+    public static final Item SATORIUM_HOE = registerItem("satorium_hoe", new HoeItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.SATORIUM, -3, 0F))));
+    public static final Item SATORIUM_CLUB = registerItem("satorium_club", new CirniumClubItem(ModToolMaterials.SATORIUM,
+            new Item.Settings().attributeModifiers(ClubItem.createAttributeModifiers(ModToolMaterials.SATORIUM, -1, -2.4f))));
+    
+    // Cirnium
+    public static final Item CIRNIUM_SWORD = registerItem("cirnium_sword", new SwordItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, 3, -2.4F))));
+    public static final Item CIRNIUM_AXE = registerItem("cirnium_axe", new AxeItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, 5, -3F))));
+    public static final Item CIRNIUM_PICKAXE = registerItem("cirnium_pickaxe", new PickaxeItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, 1, -2.8F))));
+    public static final Item CIRNIUM_SHOVEL = registerItem("cirnium_shovel", new ShovelItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, 1.5F, -3F))));
+    public static final Item CIRNIUM_HOE = registerItem("cirnium_hoe", new HoeItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, -3, 0F))));
+    public static final Item CIRNIUM_CLUB = registerItem("cirnium_club", new CirniumClubItem(ModToolMaterials.CIRNIUM,
+            new Item.Settings().attributeModifiers(ClubItem.createAttributeModifiers(ModToolMaterials.CIRNIUM, -1, -2.4f))));
+    
+    // Steel
+    public static final Item STEEL_SWORD = registerItem("steel_sword", new SwordItem(ModToolMaterials.STEEL,
+            new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.STEEL, 3, -2.4F))));
+    public static final Item STEEL_AXE = registerItem("steel_axe", new AxeItem(ModToolMaterials.STEEL,
+            new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.STEEL, 6, -3F))));
+    public static final Item STEEL_PICKAXE = registerItem("steel_pickaxe", new PickaxeItem(ModToolMaterials.STEEL,
+            new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.STEEL, 1, -2.8F))));
+    public static final Item STEEL_SHOVEL = registerItem("steel_shovel", new ShovelItem(ModToolMaterials.STEEL,
+            new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.STEEL, 1.5F, -3F))));
+    public static final Item STEEL_HOE = registerItem("steel_hoe", new HoeItem(ModToolMaterials.STEEL,
+            new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.STEEL, -3, 0F))));
+    
+    // Rubber
+    public static final Item RUBBER_CLUB = registerItem("rubber_club", new ClubItem(ModToolMaterials.RUBBER,
+            new Item.Settings().attributeModifiers(ClubItem.createAttributeModifiers(ModToolMaterials.RUBBER, -1, -2.4f))));
 
-    // FOOD
+    // Hammers
+    public static final Item IRON_HAMMER = registerItem("iron_hammer", new HammerItem(ToolMaterials.IRON,
+            new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.IRON, 7, -3.2F))));
+    public static final Item GOLDEN_HAMMER = registerItem("golden_hammer", new HammerItem(ToolMaterials.GOLD,
+            new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.GOLD, 7, -3.2F))));
+    public static final Item DIAMOND_HAMMER = registerItem("diamond_hammer", new HammerItem(ToolMaterials.DIAMOND,
+            new Item.Settings().attributeModifiers(HammerItem.createAttributeModifiers(ToolMaterials.DIAMOND, 7, -3.2F))));
+
+    // === FOOD ===
     public static final Item BURGA = registerItem("burga", new Item(new Item.Settings().food(ModFoodComponent.BURGA)));
 
     private static Item registerItem(String name, Item item) {

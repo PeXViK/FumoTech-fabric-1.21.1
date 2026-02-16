@@ -3,6 +3,7 @@ package com.pexvik.fumotech.datagen;
 import com.pexvik.fumotech.FumoTech;
 import com.pexvik.fumotech.block.ModBlocks;
 import com.pexvik.fumotech.item.ModItems;
+import com.pexvik.fumotech.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
@@ -10,13 +11,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -37,7 +36,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         List<ItemConvertible> SILVER_SMELTABLES = List.of(ModItems.SILVER_DUST, ModItems.RAW_SILVER, ModBlocks.SILVER_ORE);
 
         // === Material Smelting ===
-
         offerSmeltingAndBlasting(recipeExporter, SATORIUM_SMELTABLES, RecipeCategory.MISC, ModItems.SATORIUM_INGOT, 1.0f, 800, "satorium");
         offerSmeltingAndBlasting(recipeExporter, CIRNIUM_SMELTABLES, RecipeCategory.MISC, ModItems.CIRNIUM_INGOT, 1.0f, 800, "cirnium");
         offerSmeltingAndBlasting(recipeExporter, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT, 0.25f, 400, "tin");
@@ -69,7 +67,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ModItems.RAW_TIN, RecipeCategory.MISC, ModBlocks.RAW_TIN_BLOCK);
         offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, ModItems.RAW_SILVER, RecipeCategory.MISC, ModBlocks.RAW_SILVER_BLOCK);
 
-        // offerPlanksRecipe(recipeExporter, ModBlocks.HEVEA_PLANKS, ModTags.HEVEA_WOOD, 4);
+        offerPlanksRecipe(recipeExporter, ModBlocks.HEVEA_PLANKS, ModTags.Items.HEVEA_LOGS, 4);
+        createStairsRecipe(ModBlocks.HEVEA_STAIRS, Ingredient.ofItems(ModBlocks.HEVEA_PLANKS))
+                .criterion(hasItem(ModBlocks.HEVEA_PLANKS),  conditionsFromItem(ModBlocks.HEVEA_PLANKS))
+                .offerTo(recipeExporter);
+        offerSlabRecipe(recipeExporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HEVEA_SLAB, ModBlocks.HEVEA_PLANKS);
+        offerShapelessRecipe(recipeExporter, ModBlocks.HEVEA_BUTTON, ModBlocks.HEVEA_PLANKS, "hevea_button", 1);
+        offerPressurePlateRecipe(recipeExporter, ModBlocks.HEVEA_PRESSURE_PLATE, ModBlocks.HEVEA_PLANKS);
+        createFenceRecipe(ModBlocks.HEVEA_FENCE, Ingredient.ofItems(ModBlocks.HEVEA_PLANKS))
+                .criterion(hasItem(ModBlocks.HEVEA_PLANKS), conditionsFromItem(ModBlocks.HEVEA_PLANKS))
+                .offerTo(recipeExporter);
+        createFenceGateRecipe(ModBlocks.HEVEA_FENCE_GATE, Ingredient.ofItems(ModBlocks.HEVEA_PLANKS))
+                .criterion(hasItem(ModBlocks.HEVEA_PLANKS), conditionsFromItem(ModBlocks.HEVEA_PLANKS))
+                .offerTo(recipeExporter);
+        createDoorRecipe(ModBlocks.HEVEA_DOOR, Ingredient.ofItems(ModBlocks.HEVEA_PLANKS))
+                .criterion(hasItem(ModBlocks.HEVEA_PLANKS), conditionsFromItem(ModBlocks.HEVEA_PLANKS))
+                .offerTo(recipeExporter);
+        createTrapdoorRecipe(ModBlocks.HEVEA_TRAPDOOR, Ingredient.ofItems(ModBlocks.HEVEA_PLANKS))
+                .criterion(hasItem(ModBlocks.HEVEA_PLANKS), conditionsFromItem(ModBlocks.HEVEA_PLANKS))
+                .offerTo(recipeExporter);
 
         // === Crystals ===
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SATORIUM_CRYSTAL)
@@ -104,8 +120,86 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_rubber_club",
                         InventoryChangedCriterion.Conditions.items(ModItems.RUBBER_CLUB))
                 .offerTo(recipeExporter);
+
+        // === Armor and Tools ===
+        offerAllTools(recipeExporter, ModItems.SATORIUM_INGOT, ModItems.SATORIUM_SWORD, ModItems.SATORIUM_AXE,
+                ModItems.SATORIUM_PICKAXE, ModItems.SATORIUM_SHOVEL, ModItems.SATORIUM_HOE);
+        offerAllTools(recipeExporter, ModItems.CIRNIUM_INGOT, ModItems.CIRNIUM_SWORD, ModItems.CIRNIUM_AXE,
+                ModItems.CIRNIUM_PICKAXE, ModItems.CIRNIUM_SHOVEL, ModItems.CIRNIUM_HOE);
+        offerAllTools(recipeExporter, ModItems.STEEL_INGOT, ModItems.STEEL_SWORD, ModItems.STEEL_AXE,
+                ModItems.STEEL_PICKAXE, ModItems.STEEL_SHOVEL, ModItems.STEEL_HOE);
     }
 
+    // Programmer is very lazy
+    private static void offerAllTools(RecipeExporter exporter, ItemConvertible material, ItemConvertible swordItem,
+                                      ItemConvertible axeItem, ItemConvertible pickaxeItem, ItemConvertible shovelItem, ItemConvertible hoeItem) {
+        offerSwordRecipe(exporter, swordItem, material);
+        offerAxeRecipe(exporter, axeItem, material);
+        offerPickaxeRecipe(exporter, pickaxeItem, material);
+        offerShovelRecipe(exporter, shovelItem, material);
+        offerHoeRecipe(exporter, hoeItem, material);
+    }
+
+    private static void offerSwordRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible material) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, output)
+                .pattern("#")
+                .pattern("#")
+                .pattern("S")
+                .input('#', material)
+                .input('S', Items.STICK)
+                .group("equipment")
+                .criterion(hasItem(material), InventoryChangedCriterion.Conditions.items(material))
+                .offerTo(exporter);
+    }
+
+    private static void offerAxeRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible material) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output)
+                .pattern("## ")
+                .pattern("#S ")
+                .pattern(" S ")
+                .input('#', material)
+                .input('S', Items.STICK)
+                .group("equipment")
+                .criterion(hasItem(material), InventoryChangedCriterion.Conditions.items(material))
+                .offerTo(exporter);
+    }
+
+    private static void offerPickaxeRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible material) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output)
+                .pattern("###")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('#', material)
+                .input('S', Items.STICK)
+                .group("equipment")
+                .criterion(hasItem(material), InventoryChangedCriterion.Conditions.items(material))
+                .offerTo(exporter);
+    }
+
+    private static void offerShovelRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible material) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output)
+                .pattern("#")
+                .pattern("S")
+                .pattern("S")
+                .input('#', material)
+                .input('S', Items.STICK)
+                .group("equipment")
+                .criterion(hasItem(material), InventoryChangedCriterion.Conditions.items(material))
+                .offerTo(exporter);
+    }
+
+    private static void offerHoeRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible material) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output)
+                .pattern("## ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('#', material)
+                .input('S', Items.STICK)
+                .group("equipment")
+                .criterion(hasItem(material), InventoryChangedCriterion.Conditions.items(material))
+                .offerTo(exporter);
+    }
+    
     public static void offerReversibleCompactingRecipes(
             RecipeExporter exporter,
             RecipeCategory reverseCategory,

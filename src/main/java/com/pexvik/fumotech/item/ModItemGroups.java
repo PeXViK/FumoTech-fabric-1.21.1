@@ -17,12 +17,19 @@ public class ModItemGroups {
                             .entries((displayContext, entries) -> {
 
                                 // === SATORIUM ===
+                                entries.add(ModItems.SATORI_ITEM);
                                 entries.add(ModItems.SATORIUM_SHARD);
                                 entries.add(ModItems.SATORIUM_CRYSTAL);
                                 entries.add(ModItems.SATORIUM_INGOT);
                                 entries.add(ModItems.SATORIUM_NUGGET);
                                 entries.add(ModItems.SATORIUM_DUST);
                                 entries.add(ModItems.SATORIUM_GEAR);
+
+                                entries.add(ModItems.SATORIUM_SWORD);
+                                entries.add(ModItems.SATORIUM_AXE);
+                                entries.add(ModItems.SATORIUM_PICKAXE);
+                                entries.add(ModItems.SATORIUM_SHOVEL);
+                                entries.add(ModItems.SATORIUM_HOE);
                                 entries.add(ModItems.SATORIUM_CLUB);
 
                                 // === CIRNIUM ===
@@ -32,6 +39,11 @@ public class ModItemGroups {
                                 entries.add(ModItems.CIRNIUM_NUGGET);
                                 entries.add(ModItems.CIRNIUM_DUST);
                                 entries.add(ModItems.CIRNIUM_GEAR);
+                                entries.add(ModItems.CIRNIUM_SWORD);
+                                entries.add(ModItems.CIRNIUM_AXE);
+                                entries.add(ModItems.CIRNIUM_PICKAXE);
+                                entries.add(ModItems.CIRNIUM_SHOVEL);
+                                entries.add(ModItems.CIRNIUM_HOE);
                                 entries.add(ModItems.CIRNIUM_CLUB);
 
                                 // === RUBBER ===
@@ -49,6 +61,11 @@ public class ModItemGroups {
                                 entries.add(ModItems.STEEL_DUST);
                                 entries.add(ModItems.STEEL_PLATE);
                                 entries.add(ModItems.STEEL_GEAR);
+                                entries.add(ModItems.STEEL_SWORD);
+                                entries.add(ModItems.STEEL_AXE);
+                                entries.add(ModItems.STEEL_PICKAXE);
+                                entries.add(ModItems.STEEL_SHOVEL);
+                                entries.add(ModItems.STEEL_HOE);
 
                                 // === LEAD ===
                                 entries.add(ModItems.RAW_LEAD);
@@ -77,6 +94,11 @@ public class ModItemGroups {
                                 // === FOOD ===
                                 entries.add(ModItems.BURGA);
 
+                                // === OTHER ===
+                                entries.add(ModItems.IRON_HAMMER);
+                                entries.add(ModItems.GOLDEN_HAMMER);
+                                entries.add(ModItems.DIAMOND_HAMMER);
+
                             }).build());
 
     public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP,
@@ -101,12 +123,21 @@ public class ModItemGroups {
                                 entries.add(ModBlocks.RAW_SILVER_BLOCK);
                                 entries.add(ModBlocks.STEEL_BLOCK);
                                 entries.add(ModBlocks.RUBBER_BLOCK);
-                                entries.add(ModBlocks.HEVEA_PLANKS);
                                 entries.add(ModBlocks.HEVEA_LOG);
+                                entries.add(ModBlocks.HEVEA_PLANKS);
+                                entries.add(ModBlocks.HEVEA_STAIRS);
+                                entries.add(ModBlocks.HEVEA_SLAB);
+                                entries.add(ModBlocks.HEVEA_BUTTON);
+                                entries.add(ModBlocks.HEVEA_PRESSURE_PLATE);
+                                entries.add(ModBlocks.HEVEA_FENCE);
+                                entries.add(ModBlocks.HEVEA_FENCE_GATE);
+                                entries.add(ModBlocks.HEVEA_DOOR);
+                                entries.add(ModBlocks.HEVEA_TRAPDOOR);
 
                                 entries.add(ModBlocks.RUBBER_CLUB_GENERATOR);
                                 entries.add(ModBlocks.FUMO_PEDESTAL);
                                 entries.add(ModBlocks.CIRNO);
+                                entries.add(ModBlocks.SATORI);
 
 
                             }).build());

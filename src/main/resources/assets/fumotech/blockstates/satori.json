@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fumotech:block/satori",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fumotech:block/satori"
+    },
+    "facing=south": {
+      "model": "fumotech:block/satori",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fumotech:block/satori",
+      "y": 270
+    }
+  }
+}

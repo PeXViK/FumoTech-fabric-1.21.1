@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fumotech:block/cirno",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fumotech:block/cirno"
+    },
+    "facing=south": {
+      "model": "fumotech:block/cirno",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fumotech:block/cirno",
+      "y": 270
+    }
+  }
+}

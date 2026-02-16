@@ -3,8 +3,10 @@
 import com.pexvik.fumotech.block.ModBlocks;
 import com.pexvik.fumotech.item.ModItemGroups;
 import com.pexvik.fumotech.item.ModItems;
+import com.pexvik.fumotech.util.HammerUsageEvent;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,5 +24,7 @@ public class FumoTech implements ModInitializer {
         ModBlocks.registerModBlocks();
 
         FuelRegistry.INSTANCE.add(ModItems.MAGMA_SHARD, 300);
+
+        PlayerBlockBreakEvents.BEFORE.register(new HammerUsageEvent());
 	}
 }

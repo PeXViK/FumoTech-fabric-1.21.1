@@ -9,14 +9,12 @@ public class FumoTechClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(
-                ModBlocks.CIRNO,
-                RenderLayer.getCutout()
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlock(
-                ModBlocks.FUMO_PEDESTAL,
-                RenderLayer.getCutout()
-        );
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CIRNO, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SATORI, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FUMO_PEDESTAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HEVEA_TRAPDOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HEVEA_DOOR, RenderLayer.getCutout());
     }
+
+
 }

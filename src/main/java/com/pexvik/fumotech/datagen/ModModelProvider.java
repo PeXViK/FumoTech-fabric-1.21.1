@@ -2,6 +2,7 @@ package com.pexvik.fumotech.datagen;
 
 import com.pexvik.fumotech.block.ModBlocks;
 import com.pexvik.fumotech.item.ModItems;
+import com.pexvik.fumotech.util.ModBlockFamilies;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.*;
@@ -14,6 +15,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.HEVEA_PLANKS)
+                .family(ModBlockFamilies.HEVEA);
+
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SATORIUM_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SATORIUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_SATORIUM_ORE);
@@ -39,14 +43,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUBBER_BLOCK);
 
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HEVEA_PLANKS);
-
         blockStateModelGenerator.registerLog(ModBlocks.HEVEA_LOG).log(ModBlocks.HEVEA_LOG);
 
         blockStateModelGenerator.registerSingleton(ModBlocks.RUBBER_CLUB_GENERATOR, TexturedModel.CUBE_BOTTOM_TOP);
-
-        blockStateModelGenerator.registerSimpleState(ModBlocks.FUMO_PEDESTAL);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.CIRNO);
 
 
     }
@@ -55,13 +54,19 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
 
         // === SATORIUM ===
+        itemModelGenerator.register(ModItems.SATORI_ITEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_CRYSTAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SATORIUM_GEAR, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SATORIUM_CLUB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SATORIUM_CLUB, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SATORIUM_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SATORIUM_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SATORIUM_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SATORIUM_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.SATORIUM_HOE, Models.HANDHELD);
 
         // === CIRNIUM ===
         itemModelGenerator.register(ModItems.CIRNIUM_SHARD, Models.GENERATED);
@@ -70,12 +75,17 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CIRNIUM_NUGGET, Models.GENERATED);
         itemModelGenerator.register(ModItems.CIRNIUM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.CIRNIUM_GEAR, Models.GENERATED);
-        itemModelGenerator.register(ModItems.CIRNIUM_CLUB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CIRNIUM_CLUB, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CIRNIUM_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CIRNIUM_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CIRNIUM_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CIRNIUM_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CIRNIUM_HOE, Models.HANDHELD);
 
         // === RUBBER ===
         itemModelGenerator.register(ModItems.RAW_RUBBER, Models.GENERATED);
         itemModelGenerator.register(ModItems.RUBBER, Models.GENERATED);
-        itemModelGenerator.register(ModItems.RUBBER_CLUB, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RUBBER_CLUB, Models.HANDHELD);
 
         // === ELEMENTAL ===
         itemModelGenerator.register(ModItems.MAGMA_SHARD, Models.GENERATED);
@@ -87,6 +97,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STEEL_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL_PLATE, Models.GENERATED);
         itemModelGenerator.register(ModItems.STEEL_GEAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STEEL_SWORD, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.STEEL_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.STEEL_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.STEEL_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.STEEL_HOE, Models.HANDHELD);
 
         // === LEAD ===
         itemModelGenerator.register(ModItems.RAW_LEAD, Models.GENERATED);

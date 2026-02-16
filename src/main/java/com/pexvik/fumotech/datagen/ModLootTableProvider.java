@@ -49,6 +49,17 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HEVEA_LOG);
         addDrop(ModBlocks.HEVEA_PLANKS);
 
+        addDrop(ModBlocks.HEVEA_STAIRS);
+        addDrop(ModBlocks.HEVEA_SLAB, slabDrops(ModBlocks.HEVEA_SLAB));
+        addDrop(ModBlocks.HEVEA_BUTTON);
+        addDrop(ModBlocks.HEVEA_PRESSURE_PLATE);
+        addDrop(ModBlocks.HEVEA_FENCE);
+        addDrop(ModBlocks.HEVEA_FENCE_GATE);
+        addDrop(ModBlocks.HEVEA_DOOR, doorDrops(ModBlocks.HEVEA_DOOR));
+        addDrop(ModBlocks.HEVEA_TRAPDOOR);
+//        addDrop(ModBlocks.HEVEA_SIGN);
+//        addDrop(ModBlocks.HEVEA_WALL_SIGN);
+
         addDrop(ModBlocks.DEEPSLATE_SATORIUM_ORE, oreDrops(ModBlocks.DEEPSLATE_SATORIUM_ORE, ModItems.SATORIUM_SHARD));
         addDrop(ModBlocks.SATORIUM_ORE, oreDrops(ModBlocks.SATORIUM_ORE, ModItems.SATORIUM_SHARD));
 
@@ -65,6 +76,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RUBBER_CLUB_GENERATOR);
         addDrop(ModBlocks.FUMO_PEDESTAL);
         addDrop(ModBlocks.CIRNO);
+        addDrop(ModBlocks.SATORI);
 
 
     }
